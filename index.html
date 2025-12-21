@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONVERSOR CAMBIAL</title>
+</head>
+<body>
+    <h1>CONVERSOR CAMBIAL</h1>
+    <form id="coinForm">
+        <div id="origin" class="content">
+            <label for="valor1">De:</label>
+            <select name="originCurrency" id="optionArea1">
+                <option value="USD">USD - Dolar</option>
+                <option value="EUR">EUR - Euro</option>
+                <option value="BRL" selected>BRL - Real</option>
+                <option value="GBP">GBP - Libra</option>
+                <option value="JPY">JPY - Iene</option>
+                <option value="CAD">CAD - Dólar Canadense</option>
+                <option value="AUD">AUD - Dólar Australiano</option>
+                <option value="CHF">CHF - Franco Suiço</option>
+                <option value="CNY">CNY - Yuan</option>
+                <option value="ARS">ARS - Peso Argentino</option>
+            </select>
+            <input type="number" id="inputValue" placeholder="digite o valor aqui..." required>
+        </div>
+        <div id="destination" class="content">
+            <label for="valor2">Para:</label>
+            <select name="destinationCurrency" id="optionArea2">
+                <option value="USD" selected>USD - Dolar</option>
+                <option value="EUR">EUR - Euro</option>
+                <option value="BRL">BRL - Real</option>
+                <option value="GBP">GBP - Libra</option>
+                <option value="JPY">JPY - Iene</option>
+                <option value="CAD">CAD - Dólar Canadense</option>
+                <option value="AUD">AUD - Dólar Australiano</option>
+                <option value="CHF">CHF - Franco Suiço</option>
+                <option value="CNY">CNY - Yuan</option>
+                <option value="ARS">ARS - Peso Argentino</option>
+            </select>
+            <input type="number" id="finalValue" placeholder="valor convertido..." readonly>
+        </div>
+    </form>
+    <script src="/script.js"></script>
+</body>
+</html>
