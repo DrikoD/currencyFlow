@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CONVERSOR CAMBIAL</title>
+    <title>CURRENCY FLOW</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h1>CONVERSOR CAMBIAL</h1>
-    <form id="coinForm">
+    <header id="header" class="startEnd">
+        <h1>CURRENCY FLOW</h1>
+        <p>Faça sua converção de maneira rápida e gratuita conosco.</p>
+    </header>
+    <main id="main">
+        <form id="coinForm">
         <div id="origin" class="content">
-            <label for="valor1">De:</label>
-            <select name="originCurrency" id="optionArea1">
+            <label for="valor1" class="labelArea" >De:</label>
+            <select name="originCurrency" class="selectArea" id="optionArea1">
                 <option value="USD">USD - Dolar</option>
                 <option value="EUR">EUR - Euro</option>
                 <option value="BRL" selected>BRL - Real</option>
@@ -22,11 +27,11 @@
                 <option value="CNY">CNY - Yuan</option>
                 <option value="ARS">ARS - Peso Argentino</option>
             </select>
-            <input type="number" id="inputValue" placeholder="digite o valor aqui..." required>
+            <input type="number" id="inputValue" class="inputArea" placeholder="digite o valor aqui..." required>
         </div>
         <div id="destination" class="content">
-            <label for="valor2">Para:</label>
-            <select name="destinationCurrency" id="optionArea2">
+            <label for="valor2" class="labelArea" >Para:</label>
+            <select name="destinationCurrency"  class="selectArea" id="optionArea2">
                 <option value="USD" selected>USD - Dolar</option>
                 <option value="EUR">EUR - Euro</option>
                 <option value="BRL">BRL - Real</option>
@@ -38,9 +43,13 @@
                 <option value="CNY">CNY - Yuan</option>
                 <option value="ARS">ARS - Peso Argentino</option>
             </select>
-            <input type="number" id="finalValue" placeholder="valor convertido..." readonly>
+            <input type="number" id="finalValue" class="inputArea" placeholder="valor convertido..." readonly>
         </div>
     </form>
+    </main>
+    <footer id="footer" class="startEnd">
+        <p> &copy; 2025 Desenvolvido por Adriel Ferreira</p>
+    </footer>
     <script src="/script.js"></script>
 </body>
 </html>
