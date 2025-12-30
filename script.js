@@ -1,11 +1,44 @@
-//definição de variáveis de estado
-let toConvert = ""
-let amount = 0
-let converted = ""
-let convertedValue = 0
+//definição de estado global centralizado
+const globalState = {
+    toConvert: "",
+    amount: 0,
+    converted: "",
+    convertedValue:0,
 
-//definição de tabela de taxas de câmbio
+    rates: {
+
+    USD: {
+        USD: 1,
+        BRL: 5.00,
+        EUR: 0.92,
+        GBP: 0.79
+    },
+
+    BRL: {
+        USD: 0.20,
+        BRL: 1,
+        EUR: 0.18,
+        GBP: 0.16
+    },
+
+    EUR: {
+        USD: 1.09,
+        BRL: 5.43,
+        EUR: 1,
+        GBP: 0.86
+    },
+
+    GBP: {
+        USD: 1.27,
+        BRL: 6.32,
+        EUR: 1.16,
+        GBP: 1
+    }
+}
+}
+// manter sistema rodando enquanto o princio strangler pattern é implementado
 const rates = {
+
     USD: {
         USD: 1,
         BRL: 5.00,
@@ -40,7 +73,7 @@ document
     .getElementById("optionArea1")
     .addEventListener('change', function(event){
         if(event.target.matches("select")){
-            toConvert = event.target.value
+            globalState.toConvert = event.target.value
             debugState()
         }
     });
@@ -50,7 +83,7 @@ document
     .getElementById("origin")
     .addEventListener('input', function(event){
         if(event.target.matches("input[type='number']")){
-            amount = Number(event.target.value)
+            globalState.amount = Number(event.target.value)
             debugState()
         }
     });
@@ -60,14 +93,16 @@ document
     .getElementById("optionArea2")
     .addEventListener('change', function(event){
         if(event.target.matches("select")){
-            converted = event.target.value
+            globalState.converted = event.target.value
             debugState()
         }
     });
     
 //função de validação de estado
     function validateState(){
-        if(rates[toConvert] && rates[toConvert][converted] && Number.isFinite(amount) && amount > 0){
+        if(globalState.rates[globalState.toConvert]
+         && globalState.rates[globalState.toConvert][globalState.converted] 
+         && Number.isFinite(globalState.amount) && globalState.amount > 0){
             return true
         } else{
             return false
@@ -85,8 +120,8 @@ document
 function debugState(){
     if(!validateState()) return
 
-            convertedValue = conversion(amount, toConvert, converted)
-            document.getElementById("finalValue").value = convertedValue.toFixed(2)
+            globalState.convertedValue = conversion(globalState.amount, globalState.toConvert, globalState.converted)
+            document.getElementById("finalValue").value = globalState.convertedValue.toFixed(2)
 }
 
 
