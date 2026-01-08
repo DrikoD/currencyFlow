@@ -36,37 +36,6 @@ const globalState = {
     }
 }
 }
-// manter sistema rodando enquanto o princio strangler pattern é implementado
-const rates = {
-
-    USD: {
-        USD: 1,
-        BRL: 5.00,
-        EUR: 0.92,
-        GBP: 0.79
-    },
-
-    BRL: {
-        USD: 0.20,
-        BRL: 1,
-        EUR: 0.18,
-        GBP: 0.16
-    },
-
-    EUR: {
-        USD: 1.09,
-        BRL: 5.43,
-        EUR: 1,
-        GBP: 0.86
-    },
-
-    GBP: {
-        USD: 1.27,
-        BRL: 6.32,
-        EUR: 1.16,
-        GBP: 1
-    }
-}
 
 //primeiro passo | capturar evento de mudança em select de origem
 document
@@ -110,17 +79,17 @@ document
     }
 
 //função de conversão
-    function conversion(amount, toConvert, converted){
-        const rate = rates?.[toConvert]?.[converted]
-        if(!rate) return null
-       return amount * rate
-    }
+function conversion(amount,toConvert,converted,rates){
+    const rate = rates?.[toConvert]?.[converted]
+    if(!rate) return null
+   return amount * rate
+}
     
-//função de debug do estado
+//função controladora do fluxo
 function debugState(){
     if(!validateState()) return
 
-            globalState.convertedValue = conversion(globalState.amount, globalState.toConvert, globalState.converted)
+            globalState.convertedValue = conversion(globalState.amount, globalState.toConvert, globalState.converted, globalState.rates)
             document.getElementById("finalValue").value = globalState.convertedValue.toFixed(2)
 }
 
